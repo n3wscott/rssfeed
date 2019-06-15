@@ -20,8 +20,8 @@ import (
 	"context"
 
 	svcinformer "github.com/knative/pkg/injection/informers/kubeinformers/corev1/service"
-	asclient "github.com/knative/sample-controller/pkg/client/injection/client"
-	asinformer "github.com/knative/sample-controller/pkg/client/injection/informers/samples/v1alpha1/addressableservice"
+	asclient "github.com/n3wscott/rssfeed/pkg/client/injection/client"
+	asinformer "github.com/n3wscott/rssfeed/pkg/client/injection/informers/samples/v1alpha1/addressableservice"
 
 	"github.com/knative/pkg/configmap"
 	"github.com/knative/pkg/controller"

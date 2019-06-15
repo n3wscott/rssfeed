@@ -23,7 +23,7 @@ import (
 
 	injection "github.com/knative/pkg/injection"
 	logging "github.com/knative/pkg/logging"
-	versioned "github.com/knative/sample-controller/pkg/client/clientset/versioned"
+	versioned "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned"
 	rest "k8s.io/client-go/rest"
 )
 

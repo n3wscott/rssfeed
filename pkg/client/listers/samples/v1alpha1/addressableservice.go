@@ -19,7 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1alpha1 "github.com/knative/sample-controller/pkg/apis/samples/v1alpha1"
+	v1alpha1 "github.com/n3wscott/rssfeed/pkg/apis/samples/v1alpha1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
@@ -61,7 +61,7 @@ func (s *addressableServiceLister) AddressableServices(namespace string) Address
 type AddressableServiceNamespaceLister interface {
 	// List lists all AddressableServices in the indexer for a given namespace.
 	List(selector labels.Selector) (ret []*v1alpha1.AddressableService, err error)
-	// Get retrieves the AddressableService from the indexer for a given namespace and name.
+	// Get retrieves the RssFeed from the indexer for a given namespace and name.
 	Get(name string) (*v1alpha1.AddressableService, error)
 	AddressableServiceNamespaceListerExpansion
 }
@@ -81,7 +81,7 @@ func (s addressableServiceNamespaceLister) List(selector labels.Selector) (ret [
 	return ret, err
 }
 
-// Get retrieves the AddressableService from the indexer for a given namespace and name.
+// Get retrieves the RssFeed from the indexer for a given namespace and name.
 func (s addressableServiceNamespaceLister) Get(name string) (*v1alpha1.AddressableService, error) {
 	obj, exists, err := s.indexer.GetByKey(s.namespace + "/" + name)
 	if err != nil {

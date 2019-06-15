@@ -26,9 +26,9 @@ import (
 	"github.com/knative/pkg/controller"
 	"github.com/knative/pkg/logging"
 	"github.com/knative/pkg/tracker"
-	"github.com/knative/sample-controller/pkg/apis/samples/v1alpha1"
-	clientset "github.com/knative/sample-controller/pkg/client/clientset/versioned"
-	listers "github.com/knative/sample-controller/pkg/client/listers/samples/v1alpha1"
+	"github.com/n3wscott/rssfeed/pkg/apis/samples/v1alpha1"
+	clientset "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned"
+	listers "github.com/n3wscott/rssfeed/pkg/client/listers/samples/v1alpha1"
 	"go.uber.org/zap"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
@@ -38,7 +38,7 @@ import (
 	"k8s.io/client-go/tools/record"
 )
 
-// Reconciler implements controller.Reconciler for AddressableService resources.
+// Reconciler implements controller.Reconciler for RssFeed resources.
 type Reconciler struct {
 	// Client is used to write back status updates.
 	Client clientset.Interface

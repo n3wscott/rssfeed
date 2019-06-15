@@ -23,8 +23,8 @@ import (
 
 	injection "github.com/knative/pkg/injection"
 	logging "github.com/knative/pkg/logging"
-	fake "github.com/knative/sample-controller/pkg/client/clientset/versioned/fake"
-	client "github.com/knative/sample-controller/pkg/client/injection/client"
+	fake "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned/fake"
+	client "github.com/n3wscott/rssfeed/pkg/client/injection/client"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/rest"
 )

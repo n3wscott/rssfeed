@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	samplesv1alpha1 "github.com/knative/sample-controller/pkg/apis/samples/v1alpha1"
+	samplesv1alpha1 "github.com/n3wscott/rssfeed/pkg/apis/samples/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

@@ -21,10 +21,10 @@ package v1alpha1
 import (
 	time "time"
 
-	samplesv1alpha1 "github.com/knative/sample-controller/pkg/apis/samples/v1alpha1"
-	versioned "github.com/knative/sample-controller/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/knative/sample-controller/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/knative/sample-controller/pkg/client/listers/samples/v1alpha1"
+	samplesv1alpha1 "github.com/n3wscott/rssfeed/pkg/apis/samples/v1alpha1"
+	versioned "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/n3wscott/rssfeed/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "github.com/n3wscott/rssfeed/pkg/client/listers/samples/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -44,14 +44,14 @@ type addressableServiceInformer struct {
 	namespace        string
 }
 
-// NewAddressableServiceInformer constructs a new informer for AddressableService type.
+// NewAddressableServiceInformer constructs a new informer for RssFeed type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
 func NewAddressableServiceInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
 	return NewFilteredAddressableServiceInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredAddressableServiceInformer constructs a new informer for AddressableService type.
+// NewFilteredAddressableServiceInformer constructs a new informer for RssFeed type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
 func NewFilteredAddressableServiceInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {

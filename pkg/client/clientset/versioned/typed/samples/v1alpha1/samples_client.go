@@ -19,8 +19,8 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1alpha1 "github.com/knative/sample-controller/pkg/apis/samples/v1alpha1"
-	"github.com/knative/sample-controller/pkg/client/clientset/versioned/scheme"
+	v1alpha1 "github.com/n3wscott/rssfeed/pkg/apis/samples/v1alpha1"
+	"github.com/n3wscott/rssfeed/pkg/client/clientset/versioned/scheme"
 	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
 	rest "k8s.io/client-go/rest"
 )
@@ -30,7 +30,7 @@ type SamplesV1alpha1Interface interface {
 	AddressableServicesGetter
 }
 
-// SamplesV1alpha1Client is used to interact with features provided by the samples.knative.dev group.
+// SamplesV1alpha1Client is used to interact with features provided by the rssfeed.n3wscott.com group.
 type SamplesV1alpha1Client struct {
 	restClient rest.Interface
 }

@@ -19,7 +19,7 @@ limitations under the License.
 package versioned
 
 import (
-	samplesv1alpha1 "github.com/knative/sample-controller/pkg/client/clientset/versioned/typed/samples/v1alpha1"
+	samplesv1alpha1 "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned/typed/samples/v1alpha1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

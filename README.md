@@ -1,11 +1,9 @@
-# Knative Sample Controller
+# RssFeed
 
-[![GoDoc](https://godoc.org/github.com/knative/sample-controller?status.svg)](https://godoc.org/github.com/knative/sample-controller)
-[![Go Report Card](https://goreportcard.com/badge/knative/sample-controller)](https://goreportcard.com/report/knative/sample-controller)
+[![GoDoc](https://godoc.org/github.com/n3wscott/rssfeed?status.svg)](https://godoc.org/github.com/n3wscott/rssfeed)
+[![Go Report Card](https://goreportcard.com/badge/n3wscott/rssfeed)](https://goreportcard.com/report/n3wscott/rssfeed)
 
-Knative `sample-controller` defines a few simple resources that are validated by
-webhook and managed by a controller to demonstrate the canonical style in which
-Knative writes controllers.
+TODO: details
 
 To learn more about Knative, please visit our
 [Knative docs](https://github.com/knative/docs) repository.

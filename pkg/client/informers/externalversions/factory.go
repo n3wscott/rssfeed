@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/knative/sample-controller/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/knative/sample-controller/pkg/client/informers/externalversions/internalinterfaces"
-	samples "github.com/knative/sample-controller/pkg/client/informers/externalversions/samples"
+	versioned "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/n3wscott/rssfeed/pkg/client/informers/externalversions/internalinterfaces"
+	samples "github.com/n3wscott/rssfeed/pkg/client/informers/externalversions/samples"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

@@ -34,7 +34,7 @@ import (
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 
-	"github.com/knative/sample-controller/pkg/apis/samples/v1alpha1"
+	"github.com/n3wscott/rssfeed/pkg/apis/samples/v1alpha1"
 )
 
 const (
@@ -133,7 +133,7 @@ func SharedMain(handlers map[schema.GroupVersionKind]webhook.GenericCRD, factori
 
 func main() {
 	handlers := map[schema.GroupVersionKind]webhook.GenericCRD{
-		v1alpha1.SchemeGroupVersion.WithKind("AddressableService"): &v1alpha1.AddressableService{},
+		v1alpha1.SchemeGroupVersion.WithKind("RssFeed"): &v1alpha1.AddressableService{},
 	}
 	SharedMain(handlers)
 

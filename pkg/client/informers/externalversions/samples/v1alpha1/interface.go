@@ -19,7 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	internalinterfaces "github.com/knative/sample-controller/pkg/client/informers/externalversions/internalinterfaces"
+	internalinterfaces "github.com/n3wscott/rssfeed/pkg/client/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to all the informers in this group version.
