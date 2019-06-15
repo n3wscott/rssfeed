@@ -26,9 +26,9 @@ import (
 	"github.com/knative/pkg/controller"
 	"github.com/knative/pkg/logging"
 	"github.com/knative/pkg/tracker"
-	"github.com/n3wscott/rssfeed/pkg/apis/samples/v1alpha1"
+	"github.com/n3wscott/rssfeed/pkg/apis/sources/v1alpha1"
 	clientset "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned"
-	listers "github.com/n3wscott/rssfeed/pkg/client/listers/samples/v1alpha1"
+	listers "github.com/n3wscott/rssfeed/pkg/client/listers/sources/v1alpha1"
 	"go.uber.org/zap"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
@@ -44,7 +44,7 @@ type Reconciler struct {
 	Client clientset.Interface
 
 	// Listers index properties about resources
-	Lister        listers.AddressableServiceLister
+	Lister        listers.RssFeedLister
 	ServiceLister corev1listers.ServiceLister
 
 	// The tracker builds an index of what resources are watching other
@@ -76,7 +76,7 @@ func (r *Reconciler) Reconcile(ctx context.Context, key string) error {
 	//    ctx = r.configStore.ToContext(ctx)
 
 	// Get the resource with this namespace/name.
-	original, err := r.Lister.AddressableServices(namespace).Get(name)
+	original, err := r.Lister.RssFeeds(namespace).Get(name)
 	if apierrs.IsNotFound(err) {
 		// The resource may no longer exist, in which case we stop processing.
 		logger.Errorf("resource %q no longer exists", key)
@@ -107,23 +107,23 @@ func (r *Reconciler) Reconcile(ctx context.Context, key string) error {
 	return reconcileErr
 }
 
-func (r *Reconciler) reconcile(ctx context.Context, asvc *v1alpha1.AddressableService) error {
-	if asvc.GetDeletionTimestamp() != nil {
+func (r *Reconciler) reconcile(ctx context.Context, rf *v1alpha1.RssFeed) error {
+	if rf.GetDeletionTimestamp() != nil {
 		// Check for a DeletionTimestamp.  If present, elide the normal reconcile logic.
 		// When a controller needs finalizer handling, it would go here.
 		return nil
 	}
-	asvc.Status.InitializeConditions()
+	rf.Status.InitializeConditions()
 
-	if err := r.reconcileService(ctx, asvc); err != nil {
+	if err := r.reconcileService(ctx, rf); err != nil {
 		return err
 	}
 
-	asvc.Status.ObservedGeneration = asvc.Generation
+	rf.Status.ObservedGeneration = rf.Generation
 	return nil
 }
 
-func (r *Reconciler) reconcileService(ctx context.Context, asvc *v1alpha1.AddressableService) error {
+func (r *Reconciler) reconcileService(ctx context.Context, asvc *v1alpha1.RssFeed) error {
 	logger := logging.FromContext(ctx)
 
 	if err := r.Tracker.Track(corev1.ObjectReference{
@@ -158,8 +158,8 @@ func (r *Reconciler) reconcileService(ctx context.Context, asvc *v1alpha1.Addres
 
 // Update the Status of the resource.  Caller is responsible for checking
 // for semantic differences before calling.
-func (r *Reconciler) updateStatus(desired *v1alpha1.AddressableService) (*v1alpha1.AddressableService, error) {
-	actual, err := r.Lister.AddressableServices(desired.Namespace).Get(desired.Name)
+func (r *Reconciler) updateStatus(desired *v1alpha1.RssFeed) (*v1alpha1.RssFeed, error) {
+	actual, err := r.Lister.RssFeeds(desired.Namespace).Get(desired.Name)
 	if err != nil {
 		return nil, err
 	}
@@ -170,5 +170,5 @@ func (r *Reconciler) updateStatus(desired *v1alpha1.AddressableService) (*v1alph
 	// Don't modify the informers copy
 	existing := actual.DeepCopy()
 	existing.Status = desired.Status
-	return r.Client.SamplesV1alpha1().AddressableServices(desired.Namespace).UpdateStatus(existing)
+	return r.Client.SourcesV1alpha1().RssFeeds(desired.Namespace).UpdateStatus(existing)
 }

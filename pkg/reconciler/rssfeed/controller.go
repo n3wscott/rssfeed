@@ -21,7 +21,7 @@ import (
 
 	svcinformer "github.com/knative/pkg/injection/informers/kubeinformers/corev1/service"
 	asclient "github.com/n3wscott/rssfeed/pkg/client/injection/client"
-	asinformer "github.com/n3wscott/rssfeed/pkg/client/injection/informers/samples/v1alpha1/addressableservice"
+	rssfeedinformer "github.com/n3wscott/rssfeed/pkg/client/injection/informers/sources/v1alpha1/rssfeed"
 
 	"github.com/knative/pkg/configmap"
 	"github.com/knative/pkg/controller"
@@ -43,12 +43,12 @@ func NewController(
 ) *controller.Impl {
 	logger := logging.FromContext(ctx)
 
-	asInformer := asinformer.Get(ctx)
+	rssfeedInformer := rssfeedinformer.Get(ctx)
 	svcInformer := svcinformer.Get(ctx)
 
 	c := &Reconciler{
 		Client:        asclient.Get(ctx),
-		Lister:        asInformer.Lister(),
+		Lister:        rssfeedInformer.Lister(),
 		ServiceLister: svcInformer.Lister(),
 		Recorder: record.NewBroadcaster().NewRecorder(
 			scheme.Scheme, corev1.EventSource{Component: controllerAgentName}),
@@ -57,7 +57,7 @@ func NewController(
 
 	logger.Info("Setting up event handlers")
 
-	asInformer.Informer().AddEventHandler(controller.HandleAll(impl.Enqueue))
+	rssfeedInformer.Informer().AddEventHandler(controller.HandleAll(impl.Enqueue))
 
 	c.Tracker = tracker.New(impl.EnqueueKey, controller.GetTrackerLease(ctx))
 	svcInformer.Informer().AddEventHandler(controller.HandleAll(
