@@ -1,5 +1,6 @@
 /*
 Copyright 2019 The Knative Authors
+Copyright 2019 Scott Nichols
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,7 +20,7 @@ limitations under the License.
 package scheme
 
 import (
-	samplesv1alpha1 "github.com/n3wscott/rssfeed/pkg/apis/samples/v1alpha1"
+	sourcesv1alpha1 "github.com/n3wscott/rssfeed/pkg/apis/sources/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -31,7 +32,7 @@ var Scheme = runtime.NewScheme()
 var Codecs = serializer.NewCodecFactory(Scheme)
 var ParameterCodec = runtime.NewParameterCodec(Scheme)
 var localSchemeBuilder = runtime.SchemeBuilder{
-	samplesv1alpha1.AddToScheme,
+	sourcesv1alpha1.AddToScheme,
 }
 
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition

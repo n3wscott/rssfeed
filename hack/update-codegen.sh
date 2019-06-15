@@ -29,13 +29,13 @@ KNATIVE_CODEGEN_PKG=${KNATIVE_CODEGEN_PKG:-$(cd ${REPO_ROOT}; ls -d -1 ./vendor/
 #                  instead of the $GOPATH directly. For normal projects this can be dropped.
 ${CODEGEN_PKG}/generate-groups.sh "deepcopy,client,informer,lister" \
   github.com/n3wscott/rssfeed/pkg/client github.com/n3wscott/rssfeed/pkg/apis \
-  "samples:v1alpha1" \
+  "sources:v1alpha1" \
   --go-header-file ${REPO_ROOT}/hack/boilerplate/boilerplate.go.txt
 
 # Knative Injection
 ${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh "injection" \
-  github.com/knative/sample-controller/pkg/client github.com/knative/sample-controller/pkg/apis \
-  "samples:v1alpha1" \
+  github.com/n3wscott/rssfeed/pkg/client github.com/n3wscott/rssfeed/pkg/apis \
+  "sources:v1alpha1" \
   --go-header-file ${REPO_ROOT}/hack/boilerplate/boilerplate.go.txt
 
 # Make sure our dependencies are up-to-date

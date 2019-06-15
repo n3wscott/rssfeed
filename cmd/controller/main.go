@@ -18,7 +18,7 @@ package main
 
 import (
 	// The set of controllers this controller process runs.
-	"github.com/n3wscott/rssfeed/pkg/reconciler/addressableservice"
+	"github.com/n3wscott/rssfeed/pkg/reconciler/rssfeed"
 
 	// This defines the shared main for injected controllers.
 	"github.com/knative/pkg/injection/sharedmain"
@@ -26,6 +26,6 @@ import (
 
 func main() {
 	sharedmain.Main("controller",
-		addressableservice.NewController,
+		rssfeed.NewController,
 	)
 }

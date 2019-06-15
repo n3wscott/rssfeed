@@ -1,5 +1,6 @@
 /*
 Copyright 2019 The Knative Authors
+Copyright 2019 Scott Nichols
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,7 +26,7 @@ import (
 
 	versioned "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned"
 	internalinterfaces "github.com/n3wscott/rssfeed/pkg/client/informers/externalversions/internalinterfaces"
-	samples "github.com/n3wscott/rssfeed/pkg/client/informers/externalversions/samples"
+	sources "github.com/n3wscott/rssfeed/pkg/client/informers/externalversions/sources"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -172,9 +173,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Samples() samples.Interface
+	Sources() sources.Interface
 }
 
-func (f *sharedInformerFactory) Samples() samples.Interface {
-	return samples.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Sources() sources.Interface {
+	return sources.New(f, f.namespace, f.tweakListOptions)
 }

@@ -1,5 +1,6 @@
 /*
 Copyright 2019 The Knative Authors
+Copyright 2019 Scott Nichols
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,8 +21,8 @@ package fake
 
 import (
 	clientset "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned"
-	samplesv1alpha1 "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned/typed/samples/v1alpha1"
-	fakesamplesv1alpha1 "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned/typed/samples/v1alpha1/fake"
+	sourcesv1alpha1 "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned/typed/sources/v1alpha1"
+	fakesourcesv1alpha1 "github.com/n3wscott/rssfeed/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -71,12 +72,12 @@ func (c *Clientset) Discovery() discovery.DiscoveryInterface {
 
 var _ clientset.Interface = &Clientset{}
 
-// SamplesV1alpha1 retrieves the SamplesV1alpha1Client
-func (c *Clientset) SamplesV1alpha1() samplesv1alpha1.SamplesV1alpha1Interface {
-	return &fakesamplesv1alpha1.FakeSamplesV1alpha1{Fake: &c.Fake}
+// SourcesV1alpha1 retrieves the SourcesV1alpha1Client
+func (c *Clientset) SourcesV1alpha1() sourcesv1alpha1.SourcesV1alpha1Interface {
+	return &fakesourcesv1alpha1.FakeSourcesV1alpha1{Fake: &c.Fake}
 }
 
-// Samples retrieves the SamplesV1alpha1Client
-func (c *Clientset) Samples() samplesv1alpha1.SamplesV1alpha1Interface {
-	return &fakesamplesv1alpha1.FakeSamplesV1alpha1{Fake: &c.Fake}
+// Sources retrieves the SourcesV1alpha1Client
+func (c *Clientset) Sources() sourcesv1alpha1.SourcesV1alpha1Interface {
+	return &fakesourcesv1alpha1.FakeSourcesV1alpha1{Fake: &c.Fake}
 }
